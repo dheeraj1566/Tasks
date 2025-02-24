@@ -1,0 +1,106 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+/* ////////////////////////////// */
+
+.progress-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.start-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.start-button:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+
+.slider-container {
+  position: relative;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.slider {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 10px;
+  background: #ddd;
+  border-radius: 4px;
+  outline: none;
+  position: relative;
+}
+
+/* Square slider thumb */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Percentage text inside slider */
+.slider-percentage {
+  position: absolute;
+  top: -35px;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: left 0.05s ease-in-out;
+}

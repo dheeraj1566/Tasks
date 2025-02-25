@@ -1,37 +1,56 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [progress, setProgress] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [progressBars, setProgressBars] = useState([]);
+  const [queue, setQueue] = useState([]); // Extra progress bars yahan store honge
 
-  useEffect(() => {
-    let interval;
-    if (isRunning) {
-      interval = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 100) {
-            clearInterval(interval);
-            setIsRunning(false);
-            return 100;
-          }
-          return prev + 1;
-        });
-      }, 50);
+  const startProgress = () => {
+    const newProgress = { id: Date.now(), percentage: 0 };
+
+    if (progressBars.length < 5) {
+      addProgress(newProgress);
+    } else {
+      setQueue((prevQueue) => [...prevQueue, newProgress]);
     }
-    return () => clearInterval(interval);
-  }, [isRunning]);
+  };
+
+  const addProgress = (newProgress) => {
+    setProgressBars((prev) => [...prev, newProgress]);
+
+    let interval = setInterval(() => {
+      setProgressBars((prevBars) =>
+        prevBars.map((bar) =>
+          bar.id === newProgress.id
+            ? { ...bar, percentage: bar.percentage + 5 }
+            : bar
+        )
+      );
+    }, 250);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      setProgressBars((prevBars) => prevBars.filter((bar) => bar.id !== newProgress.id));
+
+      if (queue.length > 0) {
+        const nextProgress = queue[0];
+        // setQueue((prevQueue) => prevQueue.slice(1)); 
+        addProgress(nextProgress);
+      }
+    }, 5000);
+  };
 
   return (
-    <div className="progress-container">
-      <button onClick={() => setIsRunning(true)} disabled={isRunning} className="start-button">
-        Start Progress
-      </button>
-      <div className="slider-container">
-        <input type="range" min="0" max="100" value={progress} readOnly className="slider square-slider" />
-        <div className="slider-percentage" style={{ left: `${progress}%` }}>
-          {progress}%
-        </div>
+    <div className="container">
+      <button className="start-btn" onClick={startProgress}>Start Progress</button>
+      <div className="progress-container">
+        {progressBars.map((bar) => (
+          <div key={bar.id} className="progress-bar">
+            <div className="progress" style={{ width: `${bar.percentage}%` }}>
+              {bar.percentage}%
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

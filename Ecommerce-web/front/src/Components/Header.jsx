@@ -4,19 +4,34 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthProvider";
+import instance from "../axiosConfig";
 
 
 function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { cart, categories, fetchCategories } = useEcom();
-  const {isUserLoggedIn, Logout} = useAuth()
-
-
- // When the Header component mounts for the first time and also it is without dependency which means it will not run again unless the component is unmounted and remounted. 
+  const { isUserLoggedIn, Logout } = useAuth();
 
   useEffect(() => {
-    fetchCategories();
+    async function getCategories() {
+      await fetchCategories(); 
+    }
+    getCategories();
   }, []);
+
+  async function handleLogout() {
+    try {
+        const response = await instance.post("/LogoutUser", {}, { withCredentials: true });
+
+        if (response.status === 200) {
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            setIsUserLoggedIn(false);
+        }
+    } catch (error) {
+        console.log("Logout Error:", error);
+    }
+}
+
 
   return (
     <div className="flex justify-between bg-amber-200 px-12 py-2 mb-4">
@@ -64,7 +79,9 @@ function Header() {
 
           <div
             id="dropdown"
-            className={`z-1 ${dropdownOpen ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 shadow-sm w-44 dark:bg-amber-400 absolute mt-3`}
+            className={`z-1 ${
+              dropdownOpen ? "block" : "hidden"
+            } bg-white divide-y divide-gray-100 shadow-sm w-44 dark:bg-amber-400 absolute mt-3`}
           >
             <ul
               className="py-2 text-sm text-black dark:text-black"
@@ -72,8 +89,8 @@ function Header() {
             >
               {categories.length > 0 &&
                 categories.map((category, index) => {
-                  console.log(categories)
-                  
+                  console.log(categories);
+
                   return (
                     <li key={index}>
                       <a
@@ -89,7 +106,13 @@ function Header() {
           </div>
         </li>
 
-         <li>{isUserLoggedIn ?   <Link onClick={Logout}>Logout</Link> : <Link to="/user/login">Login</Link>}</li>
+        <li>
+          {isUserLoggedIn ? (
+            <button onClick={handleLogout}>Logout</button>
+          ) : (
+            <Link to="/user/login">Login</Link>
+          )}
+        </li>
 
         <Link to="/cart">
           <p className="flex relative">

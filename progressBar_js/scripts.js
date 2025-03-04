@@ -25,10 +25,10 @@ function createBar() {
   let progress = 0;
   const interval = setInterval(() => {
     progress += 2.56;
-    text.innerText = `${Math.round(progress)}%`;
-    bar.style.width = `${progress}%`;
+    bar.innerText = Math.round(progress) + "%";
+    bar.style.width = progress + "%";
 
-    if (progress >= 101) {
+    if (progress >= 100) {
       clearInterval(interval);
     }
   }, 100);

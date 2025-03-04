@@ -26,6 +26,30 @@
     font-weight: bold;
     color: white;
   }
+  .bar {
+    position: relative;
+    width: 0%;
+    background-color: blue;
+    height: 30px;
+    overflow: hidden;
+    animation: progress 4s linear forwards;
+  }
+  
+  .bar span {
+    position: absolute;
+    left: 50%;
+    color: white;
+  }
+  
+  @keyframes progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
   
   .progress-text {
     position: absolute;

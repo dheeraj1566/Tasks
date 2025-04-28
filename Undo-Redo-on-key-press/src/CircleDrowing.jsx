@@ -26,25 +26,25 @@ const CircleDrawing = () => {
         };
         setCircles([...circles, newCircle]);
         setUndobtn([...undobtn, newCircle]);
-        setRedobtn([]); 
+        setRedobtn([]);
     }
 
     function handleUndo() {
         if (undobtn.length > 0) {
-            const lastCircle = undobtn[undobtn.length - 1]; 
-            setRedobtn([lastCircle, ...redobtn]); 
+            const lastCircle = undobtn[undobtn.length - 1];
+            setRedobtn([lastCircle, ...redobtn]);
             setCircles(circles.filter((circle) => circle.id !== lastCircle.id));
-            setUndobtn(undobtn.slice(0, undobtn.length - 1)); 
+            setUndobtn(undobtn.slice(0, undobtn.length - 1));
         }
         console.log(undobtn)
     }
 
     function handleRedo() {
         if (redobtn.length > 0) {
-            const lastRedo = redobtn[0]; 
-            setCircles([...circles, lastRedo]); 
-            setUndobtn([...undobtn, lastRedo]); 
-            setRedobtn(redobtn.slice(1)); 
+            const lastRedo = redobtn[0];
+            setCircles([...circles, lastRedo]);
+            setUndobtn([...undobtn, lastRedo]);
+            setRedobtn(redobtn.slice(1));
         }
         console.log(redobtn)
     }
@@ -89,6 +89,9 @@ const CircleDrawing = () => {
                         }}
                     />
                 ))}
+            </div>
+            <div style={{ position: "fixed", bottom: "20px", left: "50%", transform: "translateX(-50%)", color: "white", fontSize: "18px" }}>
+                <p>Press Ctrl + Z for Undo and Ctrl + Y for Redo</p>
             </div>
         </div>
     );

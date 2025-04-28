@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Mangement System</title>
+    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main flex items-start justify-between">
+            <div class="left_side bg-amber-200 1/5 h-full">
+                <div class="dashboard ">
+                    <h1 class="bg-amber-400 text-center text-2xl py-5">Dashboard</h1>
+                    <ul>
+                     <a href="index.html"> <li class="py-2 px-5 border-amber-900 border-b-2">
+                            Inventory Table
+                        </li></a>
+                        <a href="add_invemtory.html"><li class="py-2 px-5 border-amber-900 border-b-2">
+                            Add Inventory
+                        </li></a>
+                       <a href="modify_inventory.html"> <li class="py-2 px-5 border-amber-900 border-b-2">
+                            Change Inventory
+                        </li></a>
+                        <a href="request.html" ><li class="py-2 px-5 border-amber-900 border-b-2">
+                            Request
+                        </li>
+                    </a>
+                       <a href="return.html"> <li class="py-2 px-5 border-amber-900 border-b-2">
+                            Return
+                        </li></a>
+                    </ul>
+
+                    <ul>
+                        <li class="py-4 px-5 bg-amber-500 border-amber-900 border-b-2"></li>
+                     <a href="summary.html">  <li class="py-2 px-5 border-amber-900 border-b-2">Summary</li></a> 
+                     <a href="report.html">   <li class="py-2 px-5 border-amber-900 border-b-2">Report</li></a>
+                        <li class="py-12 px-5 bg-amber-500 border-amber-900 border-b-2"></li>
+                    </ul>
+
+                 <a href="login.html">   <p class="py-2 px-5">Back to login</p></a>
+
+                </div>
+            </div>
+            <div class="right_side  w-5/5 h-full">
+                <div class="nav_bar bg-amber-300 w-full h-18  py-5 px-10 flex items-center justify-between">
+                    <div
+                        class="search_bar rounded-4xl bg-amber-500 w-4/6 h-12 px-10 py-5 mx-35 flex justify-start items-center ">
+                        <i class="fa-solid fa-search mx-5"></i>
+                        <p>Search Inventory</p>
+                    </div>
+                    <div class="notification_btn bg-amber-500 px-3 py-2 rounded-full mx-3"><i class="fa-solid fa-bell"></i></div>
+                    <div class="user_profile bg-amber-500 px-2 py-2 rounded-full mx-3"><i class="fa-solid fa-user "></i></div>
+                </div>
+
+
+                <div class="display">
+                    <h1 class="bg-amber-500 text-2xl my-10 m-auto w-72 text-center px-8 py-4 ">Change Inventory</h1>
+                    <div class="modify_inventory_table  bg-amber-200 w-4/5 m-auto px-10 py-10">
+                        <form>
+                            <div class="input_inventory flex justify-center items-center gap-10 px-10 py-10">
+                                <div class="inventory_name "><label class="" for="item_name" >Inventory Name</label>
+                                    <br>
+                                    <input class="border-2 my-5 px-5 py-2" type="text" placeholder="" ></div>
+                        <div class="category"> <label for="category">
+                            Category
+                        </label>
+                        <br>
+<select class="border-2 my-5 px-5 py-2" >
+    <option value="Stationary">Stationary</option>
+</select></div>
+
+             <div class="qty">
+                <label for="qty">
+                    Qty
+                </label>
+                <br>
+<input class="border-2 my-5 px-2 py-2 w-32"  type="number">
+<button><i class="fa-solid fa-plus mx-2 border-2 p-3"></i></button>
+<button><i class="fa-solid fa-minus  border-2 p-3"></i></button>
+             </div>           
+</div>
+<div class="buttons flex justify-center items-center"><button class="px-4 py-3 bg-amber-500 text-center mx-5">Add New Item</button>
+    <button class="px-4 py-3 bg-blue-500 text-center mx-5" type="submit">Submit</button>
+    <button class="px-4 py-3 bg-green-500 text-center mx-5">Clear</button></div>
+                        
+ 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

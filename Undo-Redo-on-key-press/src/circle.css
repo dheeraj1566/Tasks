@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#circle {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#reset, #undo, #redo {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: unset;
+    font-size: 20px;
+    margin: 15px 2px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 20; /* Ensures buttons stay above the circles */
+}
+
+#reset {
+    top: 10px;
+    left: 10px;
+}
+
+#undo {
+    top: 10px;
+    left: 150px;
+}
+
+#redo {
+    top: 10px;
+    left: 300px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

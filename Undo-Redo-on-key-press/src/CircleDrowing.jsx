@@ -26,25 +26,27 @@ const CircleDrawing = () => {
         };
         setCircles([...circles, newCircle]);
         setUndobtn([...undobtn, newCircle]);
-        setRedobtn([]);
+        setRedobtn([]); 
     }
 
     function handleUndo() {
         if (undobtn.length > 0) {
-            const lastCircle = undobtn.pop();
-            setRedobtn([lastCircle, ...redobtn]);
+            const lastCircle = undobtn[undobtn.length - 1]; 
+            setRedobtn([lastCircle, ...redobtn]); 
             setCircles(circles.filter((circle) => circle.id !== lastCircle.id));
-            setUndobtn([...undobtn]);
+            setUndobtn(undobtn.slice(0, undobtn.length - 1)); 
         }
+        console.log(undobtn)
     }
 
     function handleRedo() {
         if (redobtn.length > 0) {
-            const lastRedo = redobtn.pop();
-            setCircles([...circles, lastRedo]);
-            setUndobtn([...undobtn, lastRedo]);
-            setRedobtn([...redobtn]);
+            const lastRedo = redobtn[0]; 
+            setCircles([...circles, lastRedo]); 
+            setUndobtn([...undobtn, lastRedo]); 
+            setRedobtn(redobtn.slice(1)); 
         }
+        console.log(redobtn)
     }
 
     function handleKeyDown(e) {
@@ -59,9 +61,9 @@ const CircleDrawing = () => {
     }
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyDown);
         return () => {
-            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyDown);
         };
     }, [undobtn, redobtn, circles]);
 

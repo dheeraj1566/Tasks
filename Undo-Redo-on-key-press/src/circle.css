@@ -4,14 +4,14 @@
     box-sizing: border-box;
 }
 
-#circle {
+#parentCircle {
     width: 100%;
     height: 100vh;
-    position: absolute;
+    position: relative;
 }
 
 .circle {
-    position: relative;
+    position: absolute;
     width: 30px;
     height: 30px;
     border-radius: 50%;

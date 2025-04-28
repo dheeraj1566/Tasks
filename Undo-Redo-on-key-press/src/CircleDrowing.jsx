@@ -70,7 +70,7 @@ const CircleDrawing = () => {
     return (
         <div>
             <div
-                id="circle"
+                id="parentCircle"
                 style={{ width: "100%", height: "100vh", position: "relative" }}
                 onClick={handleClick}
             >

@@ -90,7 +90,7 @@ const CircleDrawing = () => {
                     />
                 ))}
             </div>
-            <div style={{ position: "fixed", bottom: "20px", left: "50%", transform: "translateX(-50%)", color: "white", fontSize: "18px" }}>
+            <div style={{ position: "fixed", bottom: "20px", left: "50%", transform: "translateX(-50%)", color: "black", fontSize: "18px" }}>
                 <p>Press Ctrl + Z for Undo and Ctrl + Y for Redo</p>
             </div>
         </div>
